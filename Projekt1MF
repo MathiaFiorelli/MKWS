@@ -1,0 +1,23 @@
+import cantera as ct
+import numpy as np
+import matplotlib.pyplot as plt
+
+#deklaracja mieszaniny propan - powietrze
+mieszanina = ct.Solution('gri30.xml')
+mieszanina.TPX = temperatura0, cisnienie0, 'C3H8:a, O2:b, N2:b*3.76'
+
+#inicjalizacja reakcji
+r1 = Reactor(mieszanina)
+sim = ReactorNet([r1])
+
+#otwarcie pliku txt na wyniki
+wyniki = open('wyniki.txt', 'w')
+wyniki.write('L.p.\tCzas\tTemperatura\tCisnienie\tWydzielone cieplo\n')
+
+for n in range(1000) :
+  time = (n+1)*0.001
+  sim.advance(time)
+  q = np.dot(mieszanina.net_rates_of_progress, mieszanina.delta_enthalpy)         #wydzielone ciepło
+  print '%s, %s, %s' % (r1.T, r1.P, q)
+  wyniki.write(str(n+1) + '\t' + str(time) + '\t' + str(r1.T) + '\t' + str(r1.P) + '\t' + str(q) + '\n')
+  
