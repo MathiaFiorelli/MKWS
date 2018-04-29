@@ -28,6 +28,6 @@ for n in range(10000) :
  states.append(r.thermo.state, t=time)
  q = np.dot(mieszanina.net_rates_of_progress, mieszanina.delta_enthalpy)         #wydzielone ciepło
  #print (str(r.thermo.T), str(r.thermo.P), str(q))
- wyniki.write('%5d\t%10.3f\t%10.3f\t%10.3e\t%10.3e\n' % (n+1, time, r.thermo.T, r.thermo.P, q)
+ wyniki.write('%5d\t%10.3f\t%10.3f\t%10.3e\t%10.3e\n' % (n+1, time, r.thermo.T, r.thermo.P, q))
  
 wyniki.close()
