@@ -20,7 +20,7 @@ states = ct.SolutionArray(mieszanina, extra = ['t'])
 
 #otwarcie pliku txt na wyniki
 wyniki = open('wyniki_mkws.txt', 'w')
-wyniki.write('%5s\t%10s\t%10t%10s\t%10s\n' % ('L.p.', 't [s]', 'T [K]', 'P [Pa]', 'q [J]'))
+wyniki.write('%5s\t%10s\t%10\t%10s\t%10s\n' % ('L.p.', 't [s]', 'T [K]', 'P [Pa]', 'q [J]'))
 
 for n in range(10000) :
  time += 1
