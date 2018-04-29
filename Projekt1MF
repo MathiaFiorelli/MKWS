@@ -6,15 +6,18 @@ import matplotlib.pyplot as plt
 mieszanina = ct.Solution('gri30.xml')
 temperatura0 = 1000
 cisnienie0 = 10**5
-stezenie1= 1/6
-a= 1 - stezenie1
+stezenie1= 1/5
+a= 1/stezenie1
 mieszanina.TP = temperatura0, cisnienie0 
 mieszanina.X = {'C3H8':1, 'O2':1*a, 'N2':a*3.76}
+volume0 = (1 + a) * 8.314 * temperatura0 / cisnienie0
+
+print (temperatura0, cisnienie0, volume0)
 
 time = 1.0
 
 #inicjalizacja reakcji
-r = ct.Reactor(mieszanina)
+r = ct.Reactor(mieszanina, volume = volume0)
 sim = ct.ReactorNet([r])
 states = ct.SolutionArray(mieszanina, extra = ['t'])
 
