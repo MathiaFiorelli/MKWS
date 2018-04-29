@@ -5,13 +5,13 @@ import matplotlib.pyplot as plt
 #deklaracja mieszaniny propan - powietrze
 mieszanina = ct.Solution('gri30.xml')
 temperatura0 = 1000
-cisnienie0 = 1e5
+cisnienie0 = 10**5
 stezenie1= 1/6
 a= 1 - stezenie1
 mieszanina.TP = temperatura0, cisnienie0 
 mieszanina.X = {'C3H8':1, 'O2':1*a, 'N2':a*3.76}
 
-time = 0.0
+time = 1.0
 
 #inicjalizacja reakcji
 r = ct.Reactor(mieszanina)
@@ -20,10 +20,10 @@ states = ct.SolutionArray(mieszanina, extra = ['t'])
 
 #otwarcie pliku txt na wyniki
 wyniki = open('wyniki_mkws.txt', 'w')
-wyniki.write('%5s\t%10s\t%10\t%10s\t%10s\n' % ('L.p.', 't [s]', 'T [K]', 'P [Pa]', 'q [J]'))
+wyniki.write('%5s\t%10s\t%10s\t%10s\t%10s\n' % ('L.p.', 't [s]', 'T [K]', 'P [Pa]', 'q [J]'))
 
 for n in range(10000) :
- time += 1
+ time += 0.0002
  sim.advance(time)
  states.append(r.thermo.state, t=time)
  q = np.dot(mieszanina.net_rates_of_progress, mieszanina.delta_enthalpy)         #wydzielone ciepło
@@ -31,3 +31,16 @@ for n in range(10000) :
  wyniki.write('%5d\t%10.3f\t%10.3f\t%10.3e\t%10.3e\n' % (n+1, time, r.thermo.T, r.thermo.P, q))
  
 wyniki.close()
+
+#matplotlib
+plt.subplot(3, 1, 1)
+plt.plot(states.t, states.T)
+plt.xlabel('Time [s]')
+plt.ylabel('Temperature [K]')
+plt.title('Temperature')
+plt.subplot(3, 1, 3)
+plt.plot(states.t, states.P)
+plt.xlabel('Time [s]')
+plt.ylabel('Pressure [Pa]')
+plt.title('Pressure')
+plt.show()
