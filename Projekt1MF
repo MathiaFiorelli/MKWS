@@ -18,7 +18,7 @@ for n in range(1000) :
   time = (n+1)*0.001
   sim.advance(time)
   q = np.dot(mieszanina.net_rates_of_progress, mieszanina.delta_enthalpy)         #wydzielone ciepło
-  print '%s, %s, %s' % (str(r1.T), str(r1.P), str(q))
+  print (str(r1.T), str(r1.P), str(q))
   wyniki.write(str(n+1) + '\t' + str(time) + '\t' + str(r1.T) + '\t' + str(r1.P) + '\t' + str(q) + '\n')
  
  wyniki.close()
