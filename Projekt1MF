@@ -20,11 +20,19 @@ states = ct.SolutionArray(mieszanina, extra = ['t'])
 wyniki = open('wyniki_mkws.txt', 'w')
 wyniki.write('L.p.\tCzas\tTemperatura\tCisnienie\tWydzielone cieplo\n')
 
-for n in range(1000) :
-  time = (n+1)*0.01
-  sim.advance(time)
-  q = np.dot(mieszanina.net_rates_of_progress, mieszanina.delta_enthalpy)         #wydzielone ciepło
-  print (str(r1.thermo.T), str(r1.thermo.P), str(q))
-  wyniki.write(str(n+1) + '\t' + str(time) + '\t' + str(r1.thermo.T) + '\t' + str(r1.thermo.P) + '\t' + str(q) + '\n')
+for n in range(100):
+    time += 1.e-5
+    sim.advance(time)
+    states.append(r.thermo.state, t=time*1e3)
+    print('%10.3e %10.3f %10.3f %14.6e' % (sim.time, r.T,
+                                           r.thermo.P, r.thermo.u))
+
+
+#for n in range(1000) :
+ # time = (n+1)*0.01
+ # sim.advance(time)
+ # q = np.dot(mieszanina.net_rates_of_progress, mieszanina.delta_enthalpy)         #wydzielone ciepło
+ # print (str(r1.thermo.T), str(r1.thermo.P), str(q))
+ # wyniki.write(str(n+1) + '\t' + str(time) + '\t' + str(r1.thermo.T) + '\t' + str(r1.thermo.P) + '\t' + str(q) + '\n')
  
 wyniki.close()
