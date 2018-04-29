@@ -12,18 +12,19 @@ mieszanina.TP = temperatura0, cisnienie0
 mieszanina.X = {'C3H8':1, 'O2':1*a, 'N2':a*3.76}
 
 #inicjalizacja reakcji
-r1 = Reactor(mieszanina)
-sim = ReactorNet([r1])
+r1 = ct.Reactor(mieszanina)
+sim = ct.ReactorNet([r1])
+states = ct.SolutionArray(mieszanina, extra = ['t'])
 
 #otwarcie pliku txt na wyniki
-wyniki = open('wyniki.txt', 'w')
+wyniki = open('wyniki_mkws.txt', 'w')
 wyniki.write('L.p.\tCzas\tTemperatura\tCisnienie\tWydzielone cieplo\n')
 
 for n in range(1000) :
-  time = (n+1)*0.001
+  time = (n+1)*0.01
   sim.advance(time)
   q = np.dot(mieszanina.net_rates_of_progress, mieszanina.delta_enthalpy)         #wydzielone ciepło
-  print (str(r1.T), str(r1.P), str(q))
-  wyniki.write(str(n+1) + '\t' + str(time) + '\t' + str(r1.T) + '\t' + str(r1.P) + '\t' + str(q) + '\n')
+  print (str(r1.thermo.T), str(r1.thermo.P), str(q))
+  wyniki.write(str(n+1) + '\t' + str(time) + '\t' + str(r1.thermo.T) + '\t' + str(r1.thermo.P) + '\t' + str(q) + '\n')
  
 wyniki.close()
