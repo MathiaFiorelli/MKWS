@@ -4,11 +4,12 @@ import matplotlib.pyplot as plt
 
 #deklaracja mieszaniny propan - powietrze
 mieszanina = ct.Solution('gri30.xml')
-temperatura0 = '600'
-cisnienie0 = '1e5'
-a=5
-b=3
-mieszanina.TPX = temperatura0, cisnienie0, 'C3H8':a, 'O2':b, 'N2':b*3.76'
+temperatura0 = 600
+cisnienie0 = 1e5
+stezenie1= 0.3
+a= 1 - stezenie1
+mieszanina.TP = temperatura0, cisnienie0 
+mieszanina.X = {'C3H8':1, 'O2':1*a, 'N2':a*3.76}
 
 #inicjalizacja reakcji
 r1 = Reactor(mieszanina)
