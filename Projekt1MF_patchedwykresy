@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 
 #deklaracja mieszaniny propan - powietrze
 mieszanina = ct.Solution('gri30.xml')
-temperatura0 = 300
+temperatura0 = 1000
 cisnienie0 = 10**5
-stezenie1= 1/5
+stezenie1= 0.70
 a= 1/stezenie1
 mieszanina.TPX = temperatura0, cisnienie0, {'C3H8':1, 'O2':1*a, 'N2':a*3.76}
 volume0 = (1 + 4.76*a) * 8.314 * temperatura0 / cisnienie0
@@ -15,7 +15,7 @@ reaction_rate = []
 print (temperatura0, cisnienie0, volume0)
 
 time = 0
-delta_t = 1
+delta_t = 0.005
 #inicjalizacja reakcji
 r = ct.Reactor(mieszanina, volume = volume0)
 sim = ct.ReactorNet([r])
