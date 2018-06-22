@@ -20,110 +20,104 @@ C_array = np.linspace(0.021,0.095)
 
 P2 = [] #pressure
 T2 = [] #temperature
-CJspeed= [] 
+CJspeedo= [] 
 
 x = raw_input('A - variable concentration, B - variable pressure, C - variable temperature ')
 
-while (x != 'A' and x != 'B'):
- x = raw_input('input A, B or C')
-
 #constant pressure and temperature, variable concenctration
 
-else:
- if x == 'A':
-    
-  for C1 in C_array
-   a = 4.76*C/(1-C)
-   q ='O2:1.,N2:3.76,C3H8:' + str(a)
-   [cj_speed,R2] = CJspeed(P1, T1, q, mech, 0)
-   gas = PostShock_eq(cj_speed, P1, T1, q, mech)
-   P2.append(gas.P)
-   T2.append(gas.C)
-   CJspeed.append(cj_speed)
+if x == 'A':
+ for C1 in C_array:
+  a = 4.76*C1/(1-C1)
+  q ='O2:1.,N2:3.76,C3H8:' + str(a)
+  [cj_speed,R2] = CJspeed(P1, T1, q, mech, 0)
+  gas = PostShock_eq(cj_speed, P1, T1, q, mech)
+  P2.append(gas.P)
+  T2.append(gas.T)
+  CJspeedo.append(cj_speed)
     
  #plotting the results
-plt.figure()
-plt.plot(C_aray*100, T2)
-plt.xlabel('Initial concentrarion [%]')
-plt.ylabel('Temperature [K]')
-plt.title('Post shockwave temperature')
 
-plt.figure()
-plt.plot(C_array*100, P2)
-plt.xlabel('Initial concentrarion [%]')
-plt.ylabel('Pressure [Pa]')
-plt.title('Post shockwave pressure')
+ plt.figure()
+ plt.plot(C_aray*100, T2)
+ plt.xlabel('Initial concentrarion [%]')
+ plt.ylabel('Temperature [K]')
+ plt.title('Post shockwave temperature')
 
-plt.figure()
-plt.plot(C_array, CJspeed)
-plt.xlabel('Initial concentrarion [%]')
-plt.ylabel('CJ speed [m/s]')
-plt.title('CJ speed')
+ plt.figure()
+ plt.plot(C_array*100, P2)
+ plt.xlabel('Initial concentrarion [%]')
+ plt.ylabel('Pressure [Pa]')
+ plt.title('Post shockwave pressure')
 
-plt.show()
+ plt.figure()
+ plt.plot(C_array, CJspeedo)
+ plt.xlabel('Initial concentrarion [%]')
+ plt.ylabel('CJ speed [m/s]')
+ plt.title('CJ speed')
+
+ plt.show()
 
 #constant concenctration and temperature, variable pressure
 
- elif x == 'B'
-  
-  for P1 in P_array
-   a = 4.76*C1/(1-C1)
-   q ='O2:1.,N2:3.76,C3H8:' + str(a)
-   [cj_speed,R2] = CJspeed(P1, T1, q, mech, 0)
-   gas = PostShock_eq(cj_speed, P1, T1, q, mech)
-   T2.append(gas.C)
-   CJspeed.append(cj_speed)
+elif x == 'B':
+ for P1 in P_array:
+  a = 4.76*C1/(1-C1)
+  q ='O2:1.,N2:3.76,C3H8:' + str(a)
+  [cj_speed, R2] = CJspeed(P1, T1, q, mech, 0)
+  gas = PostShock_eq(cj_speed, P1, T1, q, mech)
+  T2.append(gas.T)
+  CJspeedo.append(cj_speed)
     
  #plotting the results
-plt.figure()
-plt.plot(P_array, T2)
-plt.xlabel('Initial pressure [Pa]')
-plt.ylabel('Temperature [K]')
-plt.title('Post shockwave temperature')
+ plt.figure()
+ plt.plot(P_array, T2)
+ plt.xlabel('Initial pressure [Pa]')
+ plt.ylabel('Temperature [K]')
+ plt.title('Post shockwave temperature') 
 
-plt.figure()
-plt.plot(P_array, P2)
-plt.xlabel('Initial pressure [Pa]')
-plt.ylabel('Pressure [Pa]')
-plt.title('Post shockwave pressure')
+ plt.figure()
+ plt.plot(P_array, P2)
+ plt.xlabel('Initial pressure [Pa]')
+ plt.ylabel('Pressure [Pa]')
+ plt.title('Post shockwave pressure')
 
-plt.figure()
-plt.plot(P_array, CJspeed)
-plt.xlabel('Initial pressure [Pa]')
-plt.ylabel('CJ speed [m/s]')
-plt.title('CJ speed')
+ plt.figure()
+ plt.plot(P_array, CJspeedo)
+ plt.xlabel('Initial pressure [Pa]')
+ plt.ylabel('CJ speed [m/s]')
+ plt.title('CJ speed')
 
-plt.show()
+ plt.show()
     
 #constant pressure and concenctration, variable temperature
 
- elif x == 'C'
-  
-  for T1 in T_array
-   a = 4.76*C1/(1-C1)
-   q ='O2:1.,N2:3.76,C3H8:' + str(a)
-   [cj_speed,R2] = CJspeed(P1, T1, q, mech, 0)
-   gas = PostShock_eq(cj_speed, P1, T1, q, mech)
-   T2.append(gas.C)
-   CJspeed.append(cj_speed)
+elif x == 'C':
+ for T1 in T_array:
+  a = 4.76*C1/(1-C1)
+  q ='O2:1., N2:3.76, C3H8:' + str(a)
+  [cj_speed,R2] = CJspeed(P1, T1, q, mech, 0)
+  gas = PostShock_eq(cj_speed, P1, T1, q, mech)
+  T2.append(gas.T)
+  CJspeedo.append(cj_speed)
     
  #plotting the results
-plt.figure()
-plt.plot(T_array, T2)
-plt.xlabel('Initial temperature [K]')
-plt.ylabel('Temperature [K]')
-plt.title('Post shockwave temperature')
+ plt.figure()
+ plt.plot(T_array, T2)
+ plt.xlabel('Initial temperature [K]')
+ plt.ylabel('Temperature [K]')
+ plt.title('Post shockwave temperature')
 
-plt.figure()
-plt.plot(T_array, P2)
-plt.xlabel('Initial temperature [K]')
-plt.ylabel('Pressure [Pa]')
-plt.title('Post shockwave pressure')
+ plt.figure()
+ plt.plot(T_array, P2)
+ plt.xlabel('Initial temperature [K]')
+ plt.ylabel('Pressure [Pa]')
+ plt.title('Post shockwave pressure')
 
-plt.figure()
-plt.plot(T_array, CJspeed)
-plt.xlabel('Initial temperature [K]')
-plt.ylabel('CJ speed [m/s]')
-plt.title('CJ speed')
+ plt.figure()
+ plt.plot(T_array, CJspeedo)
+ plt.xlabel('Initial temperature [K]')
+ plt.ylabel('CJ speed [m/s]')
+ plt.title('CJ speed')
 
-plt.show()
+ plt.show()
