@@ -45,9 +45,9 @@ if x == 'A':
  plt.title('Post shockwave temperature')
 
  plt.figure()
- plt.plot(C_array*100, P2)
+ plt.plot(C_array*100, P2/10**5)
  plt.xlabel('Initial concentrarion [%]')
- plt.ylabel('Pressure [Pa]')
+ plt.ylabel('Pressure [bar]')
  plt.title('Post shockwave pressure')
 
  plt.figure()
@@ -71,20 +71,20 @@ elif x == 'B':
     
  #plotting the results
  plt.figure()
- plt.plot(P_array, T2)
- plt.xlabel('Initial pressure [Pa]')
+ plt.plot(P_array/10**5, T2)
+ plt.xlabel('Initial pressure [bar]')
  plt.ylabel('Temperature [K]')
  plt.title('Post shockwave temperature') 
 
  plt.figure()
- plt.plot(P_array, P2)
- plt.xlabel('Initial pressure [Pa]')
- plt.ylabel('Pressure [Pa]')
+ plt.plot(P_array/10**5, P2/10**5)
+ plt.xlabel('Initial pressure [bar]')
+ plt.ylabel('Pressure [bar]')
  plt.title('Post shockwave pressure')
 
  plt.figure()
- plt.plot(P_array, CJspeedo)
- plt.xlabel('Initial pressure [Pa]')
+ plt.plot(P_array/10**5, CJspeedo)
+ plt.xlabel('Initial pressure [bar]')
  plt.ylabel('CJ speed [m/s]')
  plt.title('CJ speed')
 
@@ -109,9 +109,9 @@ elif x == 'C':
  plt.title('Post shockwave temperature')
 
  plt.figure()
- plt.plot(T_array, P2)
+ plt.plot(T_array, P2/10**5)
  plt.xlabel('Initial temperature [K]')
- plt.ylabel('Pressure [Pa]')
+ plt.ylabel('Pressure [bar]')
  plt.title('Post shockwave pressure')
 
  plt.figure()
