@@ -12,9 +12,9 @@ T1 = 300
 C1 = 0.04
 mech = 'gri30_highT.cti'
 
-P_array = np.linspace(0.5,100,100)
-T_array = np.linspace(240,900,100)
-C_array = np.linspace(0.021,0.095)
+P_array = np.linspace(0.5,100,50)
+T_array = np.linspace(240,900,50)
+C_array = np.linspace(0.021,0.095,50)
 
 #postshockwave state
 
@@ -39,7 +39,7 @@ if x == 'A':
  #plotting the results
 
  plt.figure()
- plt.plot(C_aray*100, T2)
+ plt.plot(C_array*100, T2)
  plt.xlabel('Initial concentrarion [%]')
  plt.ylabel('Temperature [K]')
  plt.title('Post shockwave temperature')
@@ -51,7 +51,7 @@ if x == 'A':
  plt.title('Post shockwave pressure')
 
  plt.figure()
- plt.plot(C_array, CJspeedo)
+ plt.plot(C_array*100, CJspeedo)
  plt.xlabel('Initial concentrarion [%]')
  plt.ylabel('CJ speed [m/s]')
  plt.title('CJ speed')
