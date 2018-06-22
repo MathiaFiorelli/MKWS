@@ -33,7 +33,7 @@ if x == 'A':
   q ='O2:1.,N2:3.76,C3H8:' + str(a)
   [cj_speed,R2] = CJspeed(P1, T1, q, mech, 0)
   gas = PostShock_eq(cj_speed, P1, T1, q, mech)
-  P2.append(gas.P)
+  P2.append(gas.P*0.00001)
   T2.append(gas.T)
   CJspeedo.append(cj_speed)
     
@@ -48,7 +48,7 @@ if x == 'A':
  plt.figure()
  plt.plot(C_array*100, P2)
  plt.xlabel('Initial concentrarion [%]')
- plt.ylabel('Pressure [Pa]')
+ plt.ylabel('Pressure [bar]')
  plt.title('Post shockwave pressure')
 
  plt.figure()
@@ -68,25 +68,25 @@ elif x == 'B':
   [cj_speed, R2] = CJspeed(P1, T1, q, mech, 0)
   gas = PostShock_eq(cj_speed, P1, T1, q, mech)
   T2.append(gas.T)
-  P2.append(gas.P)
+  P2.append(gas.P*0.00001)
   CJspeedo.append(cj_speed)
     
  #plotting the results
  plt.figure()
  plt.plot(P_Bar_array, T2)
- plt.xlabel('Initial pressure [Pa]')
+ plt.xlabel('Initial pressure [bar]')
  plt.ylabel('Temperature [K]')
  plt.title('Post shockwave temperature') 
 
  plt.figure()
  plt.plot(P_Bar_array, P2)
- plt.xlabel('Initial pressure [Pa]')
- plt.ylabel('Pressure [Pa]')
+ plt.xlabel('Initial pressure [bar]')
+ plt.ylabel('Pressure [bar]')
  plt.title('Post shockwave pressure')
 
  plt.figure()
  plt.plot(P__Bar_array, CJspeedo)
- plt.xlabel('Initial pressure [Pa]')
+ plt.xlabel('Initial pressure [bar]')
  plt.ylabel('CJ speed [m/s]')
  plt.title('CJ speed')
 
@@ -101,7 +101,7 @@ elif x == 'C':
   [cj_speed,R2] = CJspeed(P1, T1, q, mech, 0)
   gas = PostShock_eq(cj_speed, P1, T1, q, mech)
   T2.append(gas.T)
-  P2.append(gas.P)
+  P2.append(gas.P*0.00001)
   CJspeedo.append(cj_speed)
     
  #plotting the results
@@ -114,7 +114,7 @@ elif x == 'C':
  plt.figure()
  plt.plot(T_array, P2)
  plt.xlabel('Initial temperature [K]')
- plt.ylabel('Pressure [Pa]')
+ plt.ylabel('Pressure [bar]')
  plt.title('Post shockwave pressure')
 
  plt.figure()
