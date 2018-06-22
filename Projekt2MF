@@ -7,12 +7,12 @@ from SDToolbox import *
 
 #initial values and arrays
 
-P1 = 10**5
-T1 = 300
+P1 = 10.0**5
+T1 = 300.0
 C1 = 0.04
 mech = 'gri30_highT.cti'
 
-P_array = np.linspace(0.5,100,50)
+P_array = np.linspace(0.5*10**5,100*10**5,50)
 T_array = np.linspace(240,900,50)
 C_array = np.linspace(0.021,0.095,50)
 
@@ -45,9 +45,9 @@ if x == 'A':
  plt.title('Post shockwave temperature')
 
  plt.figure()
- plt.plot(C_array*100, P2/10**5)
+ plt.plot(C_array*100, P2)
  plt.xlabel('Initial concentrarion [%]')
- plt.ylabel('Pressure [bar]')
+ plt.ylabel('Pressure [Pa]')
  plt.title('Post shockwave pressure')
 
  plt.figure()
@@ -67,24 +67,25 @@ elif x == 'B':
   [cj_speed, R2] = CJspeed(P1, T1, q, mech, 0)
   gas = PostShock_eq(cj_speed, P1, T1, q, mech)
   T2.append(gas.T)
+  P2.append(gas.P)
   CJspeedo.append(cj_speed)
     
  #plotting the results
  plt.figure()
- plt.plot(P_array/10**5, T2)
- plt.xlabel('Initial pressure [bar]')
+ plt.plot(P_array, T2)
+ plt.xlabel('Initial pressure [Pa]')
  plt.ylabel('Temperature [K]')
  plt.title('Post shockwave temperature') 
 
  plt.figure()
- plt.plot(P_array/10**5, P2/10**5)
- plt.xlabel('Initial pressure [bar]')
- plt.ylabel('Pressure [bar]')
+ plt.plot(P_array, P2)
+ plt.xlabel('Initial pressure [Pa]')
+ plt.ylabel('Pressure [Pa]')
  plt.title('Post shockwave pressure')
 
  plt.figure()
- plt.plot(P_array/10**5, CJspeedo)
- plt.xlabel('Initial pressure [bar]')
+ plt.plot(P_array, CJspeedo)
+ plt.xlabel('Initial pressure [Pa]')
  plt.ylabel('CJ speed [m/s]')
  plt.title('CJ speed')
 
@@ -99,6 +100,7 @@ elif x == 'C':
   [cj_speed,R2] = CJspeed(P1, T1, q, mech, 0)
   gas = PostShock_eq(cj_speed, P1, T1, q, mech)
   T2.append(gas.T)
+  P2.append(gas.P)
   CJspeedo.append(cj_speed)
     
  #plotting the results
@@ -109,9 +111,9 @@ elif x == 'C':
  plt.title('Post shockwave temperature')
 
  plt.figure()
- plt.plot(T_array, P2/10**5)
+ plt.plot(T_array, P2)
  plt.xlabel('Initial temperature [K]')
- plt.ylabel('Pressure [bar]')
+ plt.ylabel('Pressure [Pa]')
  plt.title('Post shockwave pressure')
 
  plt.figure()
