@@ -13,6 +13,7 @@ C1 = 0.04
 mech = 'gri30_highT.cti'
 
 P_array = np.linspace(0.5*10**5,100*10**5,50)
+P_Bar_array = np.linspace(0.5,100,50)
 T_array = np.linspace(240,900,50)
 C_array = np.linspace(0.021,0.095,50)
 
@@ -72,19 +73,19 @@ elif x == 'B':
     
  #plotting the results
  plt.figure()
- plt.plot(P_array, T2)
+ plt.plot(P_Bar_array, T2)
  plt.xlabel('Initial pressure [Pa]')
  plt.ylabel('Temperature [K]')
  plt.title('Post shockwave temperature') 
 
  plt.figure()
- plt.plot(P_array, P2)
+ plt.plot(P_Bar_array, P2)
  plt.xlabel('Initial pressure [Pa]')
  plt.ylabel('Pressure [Pa]')
  plt.title('Post shockwave pressure')
 
  plt.figure()
- plt.plot(P_array, CJspeedo)
+ plt.plot(P__Bar_array, CJspeedo)
  plt.xlabel('Initial pressure [Pa]')
  plt.ylabel('CJ speed [m/s]')
  plt.title('CJ speed')
