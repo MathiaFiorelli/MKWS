@@ -85,7 +85,7 @@ elif x == 'B':
  plt.title('Post shockwave pressure')
 
  plt.figure()
- plt.plot(P__Bar_array, CJspeedo)
+ plt.plot(P_Bar_array, CJspeedo)
  plt.xlabel('Initial pressure [bar]')
  plt.ylabel('CJ speed [m/s]')
  plt.title('CJ speed')
